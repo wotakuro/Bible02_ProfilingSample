@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Unity.Profiling;
 
 public class ProfilerMakerSample : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    static readonly ProfilerMarker profilerMarker = new ProfilerMarker("サンプルコードの負荷");
 
     // Update is called once per frame
     void Update()
     {
-        
+        using(profilerMarker.Auto())
+        {
+            System.Threading.Thread.Sleep(10);
+        }
     }
 }
