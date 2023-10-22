@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Profiling;
 using UnityEngine;
 
 public class ProfilerCounterSample : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    static readonly ProfilerCounter<int> characterNumber =
+       new ProfilerCounter<int>(ProfilerCategory.Scripts,
+           "ÉLÉÉÉâÇÃêî",
+           ProfilerMarkerDataUnit.Count);
+
+    private int characterNum;
+
+    public void OnCharacterNumChanged(int number)
     {
-        
+        this.characterNum = number;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        characterNumber.Sample(characterNum);
     }
 }
