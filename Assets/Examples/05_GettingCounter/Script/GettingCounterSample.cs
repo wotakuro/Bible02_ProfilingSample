@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GettingCounterSample : MonoBehaviour
 {
-    // Draw Calls Countの値取得用オブジェクト
-    ProfilerRecorder drawCallsCount;
 
+    [SerializeField]
+    private Text textField;
+
+    // Draw Calls Countの値取得用オブジェクト
+    private ProfilerRecorder drawCallsCount;
     // SetPass Calls Countの値取得用オブジェクト
-    ProfilerRecorder setPassCount;
+    private ProfilerRecorder setPassCount;
     // UsedMemoryの値取得用オブジェクト
-    ProfilerRecorder usedMemory;
+    private ProfilerRecorder usedMemory;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        // Editor上での実行で描画スキップ？されて０になるので対策
+        Application.targetFrameRate = 30;
+
         drawCallsCount = ProfilerRecorder.StartNew(ProfilerCategory.Render,
                                                        "Draw Calls Count");
         setPassCount = ProfilerRecorder.StartNew(ProfilerCategory.Render,
@@ -28,8 +35,11 @@ public class GettingCounterSample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("drawCall:" + drawCallsCount.LastValue +
-            "setPassCount:" + setPassCount.LastValue +
-            "usedMemory:" + usedMemory.LastValue);
+        if (textField)
+        {
+            textField.text = "drawCall:" + drawCallsCount.LastValue + "\n" +
+                "setPassCount:" + setPassCount.LastValue + "\n" +
+                "usedMemory:" + usedMemory.LastValue;
+        }
     }
 }
