@@ -43,11 +43,5 @@ namespace UnityChan
 			}
 		}
 
-		void OnGUI ()
-		{
-			Rect rect1 = new Rect (10, Screen.height - 20, 400, 30);
-			isIkActive = GUI.Toggle (rect1, isIkActive, "IK Active");
-		}
-
 	}
 }

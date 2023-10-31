@@ -203,7 +203,6 @@ GameObject:
   - component: {fileID: 180302171}
   - component: {fileID: 180302170}
   - component: {fileID: 180302167}
-  - component: {fileID: 180302172}
   - component: {fileID: 180302173}
   m_Layer: 0
   m_Name: Main Camera
@@ -286,21 +285,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &180302172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180302166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd026706e81db0440add962177d87b23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  focus: {x: 0, y: 0.8, z: 0}
-  focusObj: {fileID: 0}
-  showInstWindow: 1
 --- !u!114 &180302173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +424,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2009981446}
+  - {fileID: 1078760866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -447,6 +432,78 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1078760865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078760866}
+  - component: {fileID: 1078760868}
+  - component: {fileID: 1078760867}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1078760866
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078760865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1010248283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -120}
+  m_SizeDelta: {x: 902, y: 487}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1078760867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078760865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 1910f0e5fd049684b9e36c5d274e0c51, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1078760868
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078760865}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1398687468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -711,10 +768,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1010248283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -189.5}
+  m_SizeDelta: {x: 780, y: 359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2009981447
 MonoBehaviour:
@@ -749,7 +806,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ProfilerWindow\u3092\u958B\u3044\u3066\u78BA\u8A8D\u3057\u3066\u4E0B\u3055\u3044\nEditor\u306EMenu\u306EWindow->Analsis->Profiler\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044"
+  m_Text: "ProfilerWindow\u3092\u958B\u3044\u3066\u78BA\u8A8D\u3057\u3066\u4E0B\u3055\u3044\nEditor\u306EMenu\u306EWindow->Analsis->Profiler\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044\u3002\n\n\u4EE5\u4E0B\u306E\u3088\u3046\u306B\u30B5\u30F3\u30D7\u30EB\u30B3\u30FC\u30C9\u306E\u8CA0\u8377\u304C\u78BA\u8A8D\u3067\u304D\u308B\u3068\u601D\u3044\u307E\u3059\u3002"
 --- !u!222 &2009981448
 CanvasRenderer:
   m_ObjectHideFlags: 0
