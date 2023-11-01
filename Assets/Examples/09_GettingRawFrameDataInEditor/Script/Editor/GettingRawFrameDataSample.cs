@@ -28,7 +28,7 @@ public class GettingRawFrameDataSample : EditorWindow
         this.textField.value = "Animator.ProcessGraph";
         this.scrollView = new ScrollView();
 
-        this.rootVisualElement.Add(new Label("Profilerからリストアップしたい名前を指定してください(完全一致)"));
+        this.rootVisualElement.Add(new Label("ProfilerからリストアップしたいProfilerMakerの名前を指定してください(完全一致)"));
         this.rootVisualElement.Add(textField);
         this.rootVisualElement.Add(button);
         this.rootVisualElement.Add(new Label("検索結果"));

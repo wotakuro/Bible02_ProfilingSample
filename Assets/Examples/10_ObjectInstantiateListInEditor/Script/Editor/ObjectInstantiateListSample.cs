@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEditorInternal;
 using UnityEditor.Profiling;
 using UnityEditor;
-using UnityEditor.UI;
+using UnityEditor.UIElements;
 
 public class ObjectInstantiateListSample : EditorWindow
 {
@@ -16,7 +16,31 @@ public class ObjectInstantiateListSample : EditorWindow
     }
     private void OnEnable()
     {
-        GetObjectRegisterList(false);
+        var registers = GetObjectRegisterList(false);
+        var unregisters = GetObjectRegisterList(true);
+
+        var visualElement = new VisualElement();
+        visualElement.style.flexDirection = FlexDirection.Row;
+        visualElement.Add(CreateUIFromList("Register一覧", registers));
+        visualElement.Add(CreateUIFromList("Unregister一覧", unregisters));
+
+        this.rootVisualElement.Add(visualElement);
+    }
+    private VisualElement CreateUIFromList(string title ,List<string> list)
+    {
+        VisualElement visualElement = new VisualElement();
+        visualElement.Add(new Label(title));
+        var scrollView = new ScrollView();
+        foreach (var str in list)
+        {
+            scrollView.Add(new Label(str));
+        }
+        scrollView.verticalScrollerVisibility = ScrollerVisibility.AlwaysVisible;
+        scrollView.horizontalScrollerVisibility = ScrollerVisibility.AlwaysVisible;
+        visualElement.Add(scrollView);
+        visualElement.style.borderLeftWidth = 2;
+        visualElement.style.borderRightWidth = 2;
+        return visualElement;
     }
 
     private List<string> GetObjectRegisterList(bool isUnregister)
@@ -37,7 +61,7 @@ public class ObjectInstantiateListSample : EditorWindow
                 // Object.RegisterのMakerIdを取得します
                 if (objRegistmaker == FrameDataView.invalidMarkerId)
                 {
-                    if (isUnregister)
+                    if (!isUnregister)
                     {
                         objRegistmaker = frameData.GetMarkerId("Object.Register");
                     }
@@ -62,8 +86,8 @@ public class ObjectInstantiateListSample : EditorWindow
                                 out var typeInfo))
                             {
                                 // 得られたTypeの名前と、オブジェクト名をログ出力します
-                                list.Add("frame:" + frameIdx + "  " +
-                                    typeInfo.name + "::" + objectInfo.name);
+                                list.Add("frame:" + frameIdx + " instanceId:" + instanceId + 
+                                    " name:" + objectInfo.name + " type:" + typeInfo.name );
                             }
                         }
                     }
