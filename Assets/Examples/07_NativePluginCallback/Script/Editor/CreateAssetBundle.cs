@@ -6,7 +6,7 @@ using System.IO;
 
 public class CreateAssetBundle
 {
-    [MenuItem("Example/07_NativePlugin_BuildAssetBundle")]
+    [MenuItem("07_NativePluginSample/BuildAssetBundle")]
     public static void Execute()
     {
         string streamingAssetsPath = "Assets/StreamingAssets";
