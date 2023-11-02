@@ -97,8 +97,12 @@ extern "C" const char* _NativeProfilerCallbackPluginGetUpdateResult() {
 
 extern "C" void UNITY_INTERFACE_EXPORT  _NativeProfilerCallbackPluginSetupBuffer()
 {
-    buffer = reinterpret_cast<char*>(malloc(BufferSize));
-    bufferForManagedCode = reinterpret_cast<char*>(malloc(BufferSize));
+    if (!buffer) {
+        buffer = reinterpret_cast<char*>(malloc(BufferSize));
+    }
+    if (!bufferForManagedCode) {
+        bufferForManagedCode = reinterpret_cast<char*>(malloc(BufferSize));
+    }
 }
 
 

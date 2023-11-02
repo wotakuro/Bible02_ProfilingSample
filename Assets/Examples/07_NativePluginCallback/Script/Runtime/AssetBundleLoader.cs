@@ -8,10 +8,16 @@ public class AssetBundleLoader : MonoBehaviour
     private AssetBundle assetBundle;
     private List<GameObject> gmos = new List<GameObject>();
 
+    [SerializeField]
+    private GameObject warningText;
+
 
     private void Awake()
     {
-        
+        if (warningText)
+        {
+            warningText.SetActive( !File.Exists(this.AssetBundlePath));
+        }
     }
 
     // Start is called before the first frame update
@@ -19,9 +25,15 @@ public class AssetBundleLoader : MonoBehaviour
     {
         if (assetBundle != null) { return; }
         assetBundle = AssetBundle.LoadFromFile(AssetBundlePath);
-        if(assetBundle == null)
+        if (assetBundle == null)
         {
             Debug.LogError("AssetBundleÇ™ÉçÅ[ÉhÇ≈Ç´Ç‹ÇπÇÒ");
+
+            if (warningText)
+            {
+                warningText.SetActive(true);
+            }
+            return;
         }
         var prefabs = assetBundle.LoadAllAssets<GameObject>();
         foreach( var prefab in prefabs )
@@ -32,6 +44,11 @@ public class AssetBundleLoader : MonoBehaviour
     }
     public void Unload()
     {
+        foreach(var gmo in gmos)
+        {
+            GameObject.Destroy(gmo);
+        }
+        gmos.Clear();
         if (assetBundle)
         {
             assetBundle.Unload(true);
