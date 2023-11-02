@@ -31,6 +31,7 @@ static void WriteFileShaderCompileGPUProgram(const UnityProfilerMarkerData* even
         reinterpret_cast<const char*>(eventData[0].ptr),
         reinterpret_cast<const char*>(eventData[1].ptr),
         reinterpret_cast<const char*>(eventData[2].ptr));
+    currentBufferIdx += next;
     mtx.unlock();
 }
 
