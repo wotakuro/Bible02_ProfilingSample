@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+Assets/StreamingAssets/
 
 Assets/Examples/07_NativePluginCallback/PluginSource~/x64/
 
