@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class NativePluginBridge : MonoBehaviour
 {
     const string dllName = "ProfilerCallbackNativePluginSample";
+
+    [SerializeField]
+    private Text info;
+    [SerializeField]
+    private ScrollRect scrollRect;
+
 
     [DllImport(dllName)]
     public static extern void _NativeProfilerCallbackPluginSetupBuffer();
@@ -42,6 +49,12 @@ public class NativePluginBridge : MonoBehaviour
         {
             string data = NativePluginBridge._NativeProfilerCallbackPluginGetUpdateResult();
             Debug.Log(data);
+
+            info.text = data;
+            if (scrollRect && info)
+            {
+                scrollRect.content.sizeDelta = new Vector2(info.preferredWidth, info.preferredHeight);
+            }
         }
 
     }
