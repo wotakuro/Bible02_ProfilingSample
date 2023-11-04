@@ -152,7 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Program.cpp" />
+    <ClCompile Include="Source\ProfilerCallbackSample.cpp" />
     <ClCompile Include="WinSource\dllmain.cpp" />
   </ItemGroup>
   <ItemGroup>
