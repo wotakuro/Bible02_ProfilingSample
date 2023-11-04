@@ -22,7 +22,6 @@ public class EmitFrameMetadataSample : MonoBehaviour
     // Texture‚Ì–{‘Ì‚ğ–„‚ß‚ŞTag
     static readonly int TextureBodyTag = 1;
 
-    public Texture2D tex;
 
 
     public void LateUpdate()
@@ -36,13 +35,10 @@ public class EmitFrameMetadataSample : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         var texture2D = ScreenCapture.CaptureScreenshotAsTexture(1);
-        tex = texture2D;
-        Debug.Log(tex.isReadable);
-    }
-
-    private void Update()
-    {
-        var texture2D = tex;
+        if (!texture2D)
+        {
+            yield break;
+        }
         // Texture2D‚Ìî•ñ‚ğTag 0”Ô‚É–„‚ß‚İ‚Ü‚·
         TextureInfo textureInfo = new TextureInfo()
         {
