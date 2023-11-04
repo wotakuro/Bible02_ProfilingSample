@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 Assets/StreamingAssets/
+Assets/StreamingAssets.meta
 
 Assets/Examples/07_NativePluginCallback/PluginSource~/x64/
 

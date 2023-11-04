@@ -90,7 +90,7 @@ extern "C" bool UNITY_INTERFACE_EXPORT  _NativeProfilerCallbackPluginUpdate()
     mtx.unlock();
     return true;
 }
-extern "C" const char* _NativeProfilerCallbackPluginGetUpdateResult() {
+extern "C" UNITY_INTERFACE_EXPORT const char*  _NativeProfilerCallbackPluginGetUpdateResult() {
     return bufferForManagedCode;
 }
 
