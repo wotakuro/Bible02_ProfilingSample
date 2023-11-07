@@ -20,9 +20,12 @@ public class CreateAssetBundle
                 assetNames = new string[] {"Assets/UnityChan/Prefabs/unitychan.prefab"}
             }
         };
-        BuildTarget target;
+        BuildTarget target = BuildTarget.StandaloneWindows64;
+#if UNITY_EDITOR_WIN
         target = BuildTarget.StandaloneWindows64;
-
+#elif UNITY_EDITOR_OSX
+        target = BuildTarget.StandaloneOSX;
+#endif
         BuildPipeline.BuildAssetBundles(streamingAssetsPath, builds,
             BuildAssetBundleOptions.None, target );
     }

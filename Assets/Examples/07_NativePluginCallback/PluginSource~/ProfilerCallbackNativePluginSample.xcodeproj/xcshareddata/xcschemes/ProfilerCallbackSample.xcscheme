@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C506E88727A3FBA1009E0904"
-               BuildableName = "ProfilerCallbackSample.bundle"
-               BlueprintName = "ProfilerCallbackSample"
+               BuildableName = "ProfilerCallbackNativePluginSample.bundle"
+               BlueprintName = "ProfilerCallbackNativePluginSample"
                ReferencedContainer = "container:ProfilerCallbackNativePluginSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,8 +50,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C506E88727A3FBA1009E0904"
-            BuildableName = "ProfilerCallbackSample.bundle"
-            BlueprintName = "ProfilerCallbackSample"
+            BuildableName = "ProfilerCallbackNativePluginSample.bundle"
+            BlueprintName = "ProfilerCallbackNativePluginSample"
             ReferencedContainer = "container:ProfilerCallbackNativePluginSample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

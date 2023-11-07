@@ -12,7 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C506E88827A3FBA1009E0904 /* ProfilerCallbackSample.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfilerCallbackSample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C506E88827A3FBA1009E0904 /* ProfilerCallbackNativePluginSample.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfilerCallbackNativePluginSample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C506E89027A3FBE1009E0904 /* dll.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dll.cpp; sourceTree = "<group>"; };
 		C506E89427A411AC009E0904 /* IUnityInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUnityInterface.h; sourceTree = "<group>"; };
 		C506E89527A411CF009E0904 /* IUnityProfiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUnityProfiler.h; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		C506E88927A3FBA1009E0904 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C506E88827A3FBA1009E0904 /* ProfilerCallbackSample.bundle */,
+				C506E88827A3FBA1009E0904 /* ProfilerCallbackNativePluginSample.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C506E88727A3FBA1009E0904 /* ProfilerCallbackSample */ = {
+		C506E88727A3FBA1009E0904 /* ProfilerCallbackNativePluginSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ProfilerCallbackSample" */;
+			buildConfigurationList = C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ProfilerCallbackNativePluginSample" */;
 			buildPhases = (
 				C506E88427A3FBA1009E0904 /* Sources */,
 				C506E88527A3FBA1009E0904 /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = ProfilerCallbackSample;
+			name = ProfilerCallbackNativePluginSample;
 			productName = ShaderVariantLogger;
-			productReference = C506E88827A3FBA1009E0904 /* ProfilerCallbackSample.bundle */;
+			productReference = C506E88827A3FBA1009E0904 /* ProfilerCallbackNativePluginSample.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -122,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C506E88727A3FBA1009E0904 /* ProfilerCallbackSample */,
+				C506E88727A3FBA1009E0904 /* ProfilerCallbackNativePluginSample */,
 			);
 		};
 /* End PBXProject section */
@@ -321,7 +321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ProfilerCallbackSample" */ = {
+		C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ProfilerCallbackNativePluginSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C506E88D27A3FBA1009E0904 /* Debug */,
