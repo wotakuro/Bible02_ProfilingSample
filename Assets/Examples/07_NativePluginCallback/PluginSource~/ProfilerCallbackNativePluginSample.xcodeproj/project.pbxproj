@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		C506E89127A3FBE1009E0904 /* dll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C506E89027A3FBE1009E0904 /* dll.cpp */; };
-		C506E89827A41427009E0904 /* Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C506E89727A41427009E0904 /* Program.cpp */; };
+		C506E89827A41427009E0904 /* ProfilerCallbackSample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C506E89727A41427009E0904 /* ProfilerCallbackSample.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C506E88827A3FBA1009E0904 /* ShaderVariantLogger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShaderVariantLogger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C506E88827A3FBA1009E0904 /* ProfilerCallbackSample.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfilerCallbackSample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C506E89027A3FBE1009E0904 /* dll.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dll.cpp; sourceTree = "<group>"; };
 		C506E89427A411AC009E0904 /* IUnityInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUnityInterface.h; sourceTree = "<group>"; };
 		C506E89527A411CF009E0904 /* IUnityProfiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUnityProfiler.h; sourceTree = "<group>"; };
 		C506E89627A413F5009E0904 /* IUnityProfilerCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUnityProfilerCallbacks.h; sourceTree = "<group>"; };
-		C506E89727A41427009E0904 /* Program.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Program.cpp; sourceTree = "<group>"; };
+		C506E89727A41427009E0904 /* ProfilerCallbackSample.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProfilerCallbackSample.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 		C506E88927A3FBA1009E0904 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C506E88827A3FBA1009E0904 /* ShaderVariantLogger.bundle */,
+				C506E88827A3FBA1009E0904 /* ProfilerCallbackSample.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				C506E89327A41153009E0904 /* UnityPluginHeaders */,
-				C506E89727A41427009E0904 /* Program.cpp */,
+				C506E89727A41427009E0904 /* ProfilerCallbackSample.cpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C506E88727A3FBA1009E0904 /* ShaderVariantLogger */ = {
+		C506E88727A3FBA1009E0904 /* ProfilerCallbackSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ShaderVariantLogger" */;
+			buildConfigurationList = C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ProfilerCallbackSample" */;
 			buildPhases = (
 				C506E88427A3FBA1009E0904 /* Sources */,
 				C506E88527A3FBA1009E0904 /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = ShaderVariantLogger;
+			name = ProfilerCallbackSample;
 			productName = ShaderVariantLogger;
-			productReference = C506E88827A3FBA1009E0904 /* ShaderVariantLogger.bundle */;
+			productReference = C506E88827A3FBA1009E0904 /* ProfilerCallbackSample.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -109,7 +109,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C506E88327A3FBA1009E0904 /* Build configuration list for PBXProject "ShaderVariantLogger" */;
+			buildConfigurationList = C506E88327A3FBA1009E0904 /* Build configuration list for PBXProject "ProfilerCallbackNativePluginSample" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -122,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C506E88727A3FBA1009E0904 /* ShaderVariantLogger */,
+				C506E88727A3FBA1009E0904 /* ProfilerCallbackSample */,
 			);
 		};
 /* End PBXProject section */
@@ -142,7 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C506E89827A41427009E0904 /* Program.cpp in Sources */,
+				C506E89827A41427009E0904 /* ProfilerCallbackSample.cpp in Sources */,
 				C506E89127A3FBE1009E0904 /* dll.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,18 +264,21 @@
 		C506E88D27A3FBA1009E0904 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8QB9X453U;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = A8QB9X453U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = UTJ.ShaderVariantLogger;
+				PRODUCT_BUNDLE_IDENTIFIER = ProfilerCallbackNativePluginSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = bundle;
@@ -285,18 +288,21 @@
 		C506E88E27A3FBA1009E0904 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8QB9X453U;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = A8QB9X453U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = UTJ.ShaderVariantLogger;
+				PRODUCT_BUNDLE_IDENTIFIER = ProfilerCallbackNativePluginSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = bundle;
@@ -306,7 +312,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C506E88327A3FBA1009E0904 /* Build configuration list for PBXProject "ShaderVariantLogger" */ = {
+		C506E88327A3FBA1009E0904 /* Build configuration list for PBXProject "ProfilerCallbackNativePluginSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C506E88A27A3FBA1009E0904 /* Debug */,
@@ -315,7 +321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ShaderVariantLogger" */ = {
+		C506E88C27A3FBA1009E0904 /* Build configuration list for PBXNativeTarget "ProfilerCallbackSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C506E88D27A3FBA1009E0904 /* Debug */,
