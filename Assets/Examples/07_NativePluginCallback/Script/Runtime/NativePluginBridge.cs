@@ -48,9 +48,7 @@ public class NativePluginBridge : MonoBehaviour
         if (hasNewData)
         {
             string data = NativePluginBridge._NativeProfilerCallbackPluginGetUpdateResult();
-            Debug.Log(data);
-
-            info.text = data;
+            info.text += "------Frame:" + Time.frameCount + "---------\n" + data;
             if (scrollRect && info)
             {
                 scrollRect.content.sizeDelta = new Vector2(info.preferredWidth, info.preferredHeight);

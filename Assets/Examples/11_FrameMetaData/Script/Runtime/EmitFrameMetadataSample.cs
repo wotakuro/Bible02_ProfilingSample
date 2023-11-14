@@ -39,6 +39,13 @@ public class EmitFrameMetadataSample : MonoBehaviour
         {
             yield break;
         }
+#if UNITY_EDITOR
+        // Editor実行で完了時にエラーが出るのを防ぐため
+        if (!UnityEditor.EditorApplication.isPlaying)
+        {
+            yield break;
+        }
+#endif
         // Texture2Dの情報をTag 0番に埋め込みます
         TextureInfo textureInfo = new TextureInfo()
         {
@@ -51,7 +58,7 @@ public class EmitFrameMetadataSample : MonoBehaviour
         // Texture本体のデータを取得し、Tag１番にデータを埋め込みます
         NativeArray<byte> textureData = texture2D.GetRawTextureData<byte>();
         Profiler.EmitFrameMetaData(MetadataId, TextureBodyTag, textureData);
-
-
+        textureData.Dispose();
+        UnityEngine.Object.Destroy(texture2D);
     }
 }

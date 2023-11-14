@@ -48,6 +48,11 @@ public class GetFrameMetadataSample : EditorWindow
         int frameIdx = (int)ProfilerWindow.GetWindow<ProfilerWindow>().selectedFrameIndex;
         if (cacheFrameIdx != frameIdx)
         {
+            // Šù‘¶‚ÌTexture‚ð”jŠü‚µ‚Ü‚·
+            if (screenshotCache)
+            {
+                UnityEngine.Object.Destroy(screenshotCache);
+            }
             screenshotCache = GetScreenshotTexture(frameIdx);
             cacheFrameIdx = frameIdx;
         }

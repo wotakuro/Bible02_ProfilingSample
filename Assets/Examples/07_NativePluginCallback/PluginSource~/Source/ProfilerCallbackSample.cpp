@@ -91,7 +91,12 @@ extern "C" bool UNITY_INTERFACE_EXPORT  _NativeProfilerCallbackPluginUpdate()
     return true;
 }
 extern "C" UNITY_INTERFACE_EXPORT const char*  _NativeProfilerCallbackPluginGetUpdateResult() {
-    return bufferForManagedCode;
+    int length = strlen(bufferForManagedCode) ;
+    void* ptr = malloc(length+1);
+    if (ptr) {
+        memcpy(ptr, bufferForManagedCode, static_cast<size_t>(length) + 1);
+    }
+    return reinterpret_cast<char*>(ptr);
 }
 
 
@@ -139,6 +144,14 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginUnload()
         s_UnityProfilerCallbacks->UnregisterCreateMarkerCallback(&SetupCreateMarkerCallback, NULL);
         s_UnityProfilerCallbacks->UnregisterMarkerEventCallback(NULL, &OnProfilerEvent, NULL);
         s_IsLoadedPlugin = false;
+    }
+    if (buffer) {
+        free(buffer);
+        buffer = NULL;
+    }
+    if (bufferForManagedCode) {
+        free(bufferForManagedCode);
+        bufferForManagedCode = NULL;
     }
 }
 
