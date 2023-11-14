@@ -19,10 +19,7 @@ public class NativePluginBridge : MonoBehaviour
     public static extern void _NativeProfilerCallbackPluginSetupBuffer();
 
     [DllImport(dllName)]
-    public static extern bool _NativeProfilerCallbackPluginUpdate();
-
-    [DllImport(dllName)]
-    public static extern string _NativeProfilerCallbackPluginGetUpdateResult();
+    public static extern string _NativeProfilerCallbackPluginUpdate();
 
 
     [DllImport(dllName)]
@@ -44,10 +41,9 @@ public class NativePluginBridge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool hasNewData = NativePluginBridge._NativeProfilerCallbackPluginUpdate();
-        if (hasNewData)
+        var data = NativePluginBridge._NativeProfilerCallbackPluginUpdate();
+        if (!string.IsNullOrEmpty(data))
         {
-            string data = NativePluginBridge._NativeProfilerCallbackPluginGetUpdateResult();
             info.text += "------Frame:" + Time.frameCount + "---------\n" + data;
             if (scrollRect && info)
             {

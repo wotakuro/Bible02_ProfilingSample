@@ -13,7 +13,6 @@ static IUnityProfilerCallbacks* s_UnityProfilerCallbacks = NULL;
 
 static bool s_executeFlag = false;
 static char* buffer = NULL;
-static char* bufferForManagedCode = NULL;
 static int currentBufferIdx = 0;
 
 static std::mutex mtx;
@@ -22,7 +21,7 @@ static void WriteFileShaderCompileGPUProgram(const UnityProfilerMarkerData* even
 
     mtx.lock();
 
-    int size = 1024;
+    int size = BufferSize - currentBufferIdx -1;
 
     // [0] shader name
     // [1] pass
@@ -78,24 +77,19 @@ static void UNITY_INTERFACE_API OnProfilerEvent(const UnityProfilerMarkerDesc* m
     }
 }
 
-extern "C" bool UNITY_INTERFACE_EXPORT  _NativeProfilerCallbackPluginUpdate()
-{
+extern "C" UNITY_INTERFACE_EXPORT const char* _NativeProfilerCallbackPluginUpdate() {
+
     mtx.lock();
-    if (currentBufferIdx == 0) {
+    if (currentBufferIdx <= 0) {
         mtx.unlock();
-        return false;
+        return NULL;
     }
-    memcpy(bufferForManagedCode, buffer, currentBufferIdx + 1);
+    void* ptr = malloc(currentBufferIdx+1);
+    if (ptr) {
+        memcpy(ptr, buffer, currentBufferIdx + 1);
+    }
     currentBufferIdx = 0;
     mtx.unlock();
-    return true;
-}
-extern "C" UNITY_INTERFACE_EXPORT const char*  _NativeProfilerCallbackPluginGetUpdateResult() {
-    int length = strlen(bufferForManagedCode) ;
-    void* ptr = malloc(length+1);
-    if (ptr) {
-        memcpy(ptr, bufferForManagedCode, static_cast<size_t>(length) + 1);
-    }
     return reinterpret_cast<char*>(ptr);
 }
 
@@ -104,9 +98,6 @@ extern "C" void UNITY_INTERFACE_EXPORT  _NativeProfilerCallbackPluginSetupBuffer
 {
     if (!buffer) {
         buffer = reinterpret_cast<char*>(malloc(BufferSize));
-    }
-    if (!bufferForManagedCode) {
-        bufferForManagedCode = reinterpret_cast<char*>(malloc(BufferSize));
     }
 }
 
@@ -148,10 +139,6 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginUnload()
     if (buffer) {
         free(buffer);
         buffer = NULL;
-    }
-    if (bufferForManagedCode) {
-        free(bufferForManagedCode);
-        bufferForManagedCode = NULL;
     }
 }
 
