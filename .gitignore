@@ -65,6 +65,11 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# backup
+*.cs.1~
+*.cs.2~
+*.cs.3~
+
 # Crashlytics generated file
 crashlytics-build.properties
 
