@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -27,7 +27,7 @@ public class AssetBundleLoader : MonoBehaviour
         assetBundle = AssetBundle.LoadFromFile(AssetBundlePath);
         if (assetBundle == null)
         {
-            Debug.LogError("AssetBundle‚ªƒ[ƒh‚Å‚«‚Ü‚¹‚ñ");
+            Debug.LogError("AssetBundleãŒãƒ­ãƒ¼ãƒ‰ã§ãã¾ã›ã‚“");
 
             if (warningText)
             {

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProfilerMakerWithMetadata : MonoBehaviour
 {
 
-    static readonly ProfilerMarker<int> profilerMarker = new ProfilerMarker<int>("List‚Ìˆ—","—v‘f”");
+    static readonly ProfilerMarker<int> profilerMarker = new ProfilerMarker<int>("Listã®å‡¦ç†","è¦ç´ æ•°");
     private List<float> m_Items = new List<float>();
     public int m_ItemCount = 10000;
 
@@ -27,7 +27,7 @@ public class ProfilerMakerWithMetadata : MonoBehaviour
         }
     }
 
-    // ƒAƒCƒeƒ€”‚Ì’²®
+    // ã‚¢ã‚¤ãƒ†ãƒ æ•°ã®èª¿æ•´
     void SetupItems()
     {
         if( m_Items.Count > m_ItemCount)

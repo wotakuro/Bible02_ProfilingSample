@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditorInternal;
@@ -21,8 +21,8 @@ public class ObjectInstantiateListSample : EditorWindow
 
         var visualElement = new VisualElement();
         visualElement.style.flexDirection = FlexDirection.Row;
-        visualElement.Add(CreateUIFromList("Registerˆê——", registers));
-        visualElement.Add(CreateUIFromList("Unregisterˆê——", unregisters));
+        visualElement.Add(CreateUIFromList("Registerä¸€è¦§", registers));
+        visualElement.Add(CreateUIFromList("Unregisterä¸€è¦§", unregisters));
 
         this.rootVisualElement.Add(visualElement);
     }
@@ -48,17 +48,17 @@ public class ObjectInstantiateListSample : EditorWindow
         var list = new List<string>();
         int objRegistmaker = FrameDataView.invalidMarkerId;
 
-        // ProfilerWindowã‚É“Ç‚İ‚ñ‚¾ƒf[ƒ^‚ÌÅ‰‚ÆÅŒã‚ÌƒtƒŒ[ƒ€‚ÌIndex‚ğæ“¾‚µ‚Ü‚·
+        // ProfilerWindowä¸Šã«èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã®æœ€åˆã¨æœ€å¾Œã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®Indexã‚’å–å¾—ã—ã¾ã™
         int firstIndex = ProfilerDriver.firstFrameIndex;
         int lastIndex = ProfilerDriver.lastFrameIndex;
 
-        // ‘S‚Ä‚ÌƒtƒŒ[ƒ€‚ğˆ—‚µ‚Ü‚·
+        // å…¨ã¦ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’å‡¦ç†ã—ã¾ã™
         for (int frameIdx = firstIndex; frameIdx < lastIndex; ++frameIdx)
         {
-            // w’èƒtƒŒ[ƒ€‚Ì0”Ô–Ú‚ÌThread(Main Thread)‚ğæ“¾‚µ‚Ü‚·
+            // æŒ‡å®šãƒ•ãƒ¬ãƒ¼ãƒ ã®0ç•ªç›®ã®Thread(Main Thread)ã‚’å–å¾—ã—ã¾ã™
             using (var frameData = ProfilerDriver.GetRawFrameDataView(frameIdx, 0))
             {
-                // Object.Register‚ÌMakerId‚ğæ“¾‚µ‚Ü‚·
+                // Object.Registerã®MakerIdã‚’å–å¾—ã—ã¾ã™
                 if (objRegistmaker == FrameDataView.invalidMarkerId)
                 {
                     if (!isUnregister)
@@ -70,22 +70,22 @@ public class ObjectInstantiateListSample : EditorWindow
                         objRegistmaker = frameData.GetMarkerId("Object.Unregister");
                     }
                 }
-                // MainThreadã‚É‚ ‚éSample‚©‚çƒf[ƒ^‚ğæ‚è‚Ü‚·
+                // MainThreadä¸Šã«ã‚ã‚‹Sampleã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šã¾ã™
                 for (int sampleIdx = 0; sampleIdx < frameData.sampleCount; ++sampleIdx)
                 {
-                    // gObject.Registerh‚ªŒ©‚Â‚©‚Á‚½ê‡
+                    // â€œObject.Registerâ€ãŒè¦‹ã¤ã‹ã£ãŸå ´åˆ
                     if (frameData.GetSampleMarkerId(sampleIdx) == objRegistmaker)
                     {
-                        // ¶¬‚µ‚½Object‚ÌInstanceId‚ğæ“¾‚µ‚Ü‚·
+                        // ç”Ÿæˆã—ãŸObjectã®InstanceIdã‚’å–å¾—ã—ã¾ã™
                         var instanceId = frameData.GetSampleMetadataAsInt(sampleIdx, 0);
-                        // ƒIƒuƒWƒFƒNƒg‚ÉŠÖ‚·‚éî•ñ‚ğæ“¾‚µ‚Ü‚·
+                        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é–¢ã™ã‚‹æƒ…å ±ã‚’å–å¾—ã—ã¾ã™
                         if (frameData.GetUnityObjectInfo(instanceId, out var objectInfo))
                         {
-                            // ƒIƒuƒWƒFƒNƒg‚ÌType‚ÉŠÖ‚·‚éî•ñ‚ğæ“¾‚µ‚Ü‚·
+                            // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Typeã«é–¢ã™ã‚‹æƒ…å ±ã‚’å–å¾—ã—ã¾ã™
                             if (frameData.GetUnityObjectNativeTypeInfo(objectInfo.nativeTypeIndex,
                                 out var typeInfo))
                             {
-                                // “¾‚ç‚ê‚½Type‚Ì–¼‘O‚ÆAƒIƒuƒWƒFƒNƒg–¼‚ğƒƒOo—Í‚µ‚Ü‚·
+                                // å¾—ã‚‰ã‚ŒãŸTypeã®åå‰ã¨ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’ãƒ­ã‚°å‡ºåŠ›ã—ã¾ã™
                                 list.Add("frame:" + frameIdx + " instanceId:" + instanceId + 
                                     " name:" + objectInfo.name + " type:" + typeInfo.name );
                             }

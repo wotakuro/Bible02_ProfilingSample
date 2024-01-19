@@ -1,4 +1,4 @@
-
+ï»¿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,13 +22,13 @@ public class GetFrameMetadataSample : EditorWindow
         GetFrameMetadataSample.GetWindow<GetFrameMetadataSample>();
     }
 
-    // Editorã‚ÌƒR[ƒh‚Å‚·
-    // GUIDAEmitFrameMetaData‚ÆGetFrameMetaData‚Åˆê’v‚³‚¹‚é•K—v‚ª‚ ‚è‚Ü‚·
+    // Editorä¸Šã®ã‚³ãƒ¼ãƒ‰ã§ã™
+    // GUIDã€EmitFrameMetaDataã¨GetFrameMetaDataã§ä¸€è‡´ã•ã›ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™
     Guid MetadataId = new Guid("7E1DEA84-51F1-477A-82B5-B5C57AC1EBF7");
-    // FrameMetaData‚ÍTagID‚Åƒf[ƒ^‚ğ‹æ•Ê‚Å‚«‚Ü‚·B
-    // Texture‚Ìî•ñ‚ğ–„‚ß‚Ü‚ê‚½Tag
+    // FrameMetaDataã¯TagIDã§ãƒ‡ãƒ¼ã‚¿ã‚’åŒºåˆ¥ã§ãã¾ã™ã€‚
+    // Textureã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã¾ã‚ŒãŸTag
     static readonly int TextureInfoTag = 0;
-    // Texture‚Ì–{‘Ì‚ğ–„‚ß‚Ü‚ê‚½Tag
+    // Textureã®æœ¬ä½“ã‚’åŸ‹ã‚è¾¼ã¾ã‚ŒãŸTag
     static readonly int TextureBodyTag = 1;
 
     private void OnEnable()
@@ -44,11 +44,11 @@ public class GetFrameMetadataSample : EditorWindow
     // Update is called once per frame
     void OnGUI()
     {        
-        // ProfilerWindow‚ÅŒ»İ‘I‘ğ’†‚ÌƒtƒŒ[ƒ€‚ÌIndex
+        // ProfilerWindowã§ç¾åœ¨é¸æŠä¸­ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®Index
         int frameIdx = (int)ProfilerWindow.GetWindow<ProfilerWindow>().selectedFrameIndex;
         if (cacheFrameIdx != frameIdx)
         {
-            // Šù‘¶‚ÌTexture‚ğ”jŠü‚µ‚Ü‚·
+            // æ—¢å­˜ã®Textureã‚’ç ´æ£„ã—ã¾ã™
             if (screenshotCache)
             {
                 UnityEngine.Object.Destroy(screenshotCache);
@@ -63,20 +63,20 @@ public class GetFrameMetadataSample : EditorWindow
         }
         else
         {
-            EditorGUILayout.LabelField("Screenshot‚Ìƒf[ƒ^‚ª–„‚ß‚Ü‚ê‚Ä‚¢‚Ü‚¹‚ñ");
-            EditorGUILayout.LabelField("11_FrameMetaData‚ÌƒV[ƒ“‚ÅÀs‚µ‚ÄProfiler‚ÉScreenshot‚ğ–„‚ß‚ñ‚Å‚­‚¾‚³‚¢");
+            EditorGUILayout.LabelField("Screenshotã®ãƒ‡ãƒ¼ã‚¿ãŒåŸ‹ã‚è¾¼ã¾ã‚Œã¦ã„ã¾ã›ã‚“");
+            EditorGUILayout.LabelField("11_FrameMetaDataã®ã‚·ãƒ¼ãƒ³ã§å®Ÿè¡Œã—ã¦Profilerã«Screenshotã‚’åŸ‹ã‚è¾¼ã‚“ã§ãã ã•ã„");
         }
 
     }
     private Texture2D GetScreenshotTexture(int frameIdx)
     {
 
-        // ProfilerWindow‚ÌŒ»İ‘I‘ğ’†‚ÌƒtƒŒ[ƒ€‚Ìî•ñ‚ğ“¾‚Ü‚·
+        // ProfilerWindowã®ç¾åœ¨é¸æŠä¸­ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®æƒ…å ±ã‚’å¾—ã¾ã™
         using (var frameData = ProfilerDriver.GetHierarchyFrameDataView(frameIdx, 0,
             HierarchyFrameDataView.ViewModes.Default,
             HierarchyFrameDataView.columnDontSort, false))
         {
-            // ƒtƒŒ[ƒ€‚É–„‚ß‚Ü‚ê‚½ MetadataId ‚Ìƒ^ƒO‚O”Ô‚ğTextureInfoŒ^‚Æ‚µ‚Äæ“¾‚µ‚Ü‚·
+            // ãƒ•ãƒ¬ãƒ¼ãƒ ã«åŸ‹ã‚è¾¼ã¾ã‚ŒãŸ MetadataId ã®ã‚¿ã‚°ï¼ç•ªã‚’TextureInfoå‹ã¨ã—ã¦å–å¾—ã—ã¾ã™
             NativeArray<TextureInfo> textureInfos =
                 frameData.GetFrameMetaData<TextureInfo>(MetadataId, TextureInfoTag);
 
@@ -85,15 +85,15 @@ public class GetFrameMetadataSample : EditorWindow
                 return null;
             }
 
-            // Texture‚Ìî•ñ‚©‚çTexture‚ğì¬‚µ‚Ü‚·
+            // Textureã®æƒ…å ±ã‹ã‚‰Textureã‚’ä½œæˆã—ã¾ã™
             TextureInfo textureInfo = textureInfos[0];
             Texture2D texture2D = new Texture2D(textureInfo.w, textureInfo.h,
                 (TextureFormat)textureInfo.format, false);
 
-            // ƒtƒŒ[ƒ€‚É–„‚ß‚Ü‚ê‚½ MetadataId ‚Ìƒ^ƒO1”Ô‚ğByte”z—ñ‚Æ‚µ‚Äæ“¾‚µ‚Ü‚·
+            // ãƒ•ãƒ¬ãƒ¼ãƒ ã«åŸ‹ã‚è¾¼ã¾ã‚ŒãŸ MetadataId ã®ã‚¿ã‚°1ç•ªã‚’Byteé…åˆ—ã¨ã—ã¦å–å¾—ã—ã¾ã™
             NativeArray<byte> textureData =
                 frameData.GetFrameMetaData<byte>(MetadataId, TextureBodyTag);
-            // Texture‚Ì–{‘Ì‚ğŒ³‚ÉTexture‚Ìî•ñ‚ğƒ[ƒh‚µ‚Ü‚·
+            // Textureã®æœ¬ä½“ã‚’å…ƒã«Textureã®æƒ…å ±ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™
             texture2D.LoadRawTextureData(textureData);
             texture2D.Apply();
             return texture2D;

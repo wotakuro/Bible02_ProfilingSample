@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
     public Action<int> OnCharacterNumberChange;
     private void Awake()
     {
-        // ‰Šú‚Éˆê‘Ì‚Í”z’u
+        // åˆæœŸã«ä¸€ä½“ã¯é…ç½®
         OnAddCharacter();
         s_instance = this;
     }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
@@ -11,7 +11,7 @@ public class ProfilerRecorderSample : MonoBehaviour
     [SerializeField]
     private Text textField;
 
-    [Header("–ˆƒtƒŒ[ƒ€XV‚·‚é‚È‚ç updateEveryFrame‚Éƒ`ƒFƒbƒN\nupdateEveryFrame‚Éƒ`ƒFƒbƒN‚ª‚È‚¢‚È‚ç‚P•b–ˆ‚ÌXV")]
+    [Header("æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°ã™ã‚‹ãªã‚‰ updateEveryFrameã«ãƒã‚§ãƒƒã‚¯Â¥nupdateEveryFrameã«ãƒã‚§ãƒƒã‚¯ãŒãªã„ãªã‚‰ï¼‘ç§’æ¯ã®æ›´æ–°")]
     [SerializeField]
     private bool updateEveryFrame;
 
@@ -22,7 +22,7 @@ public class ProfilerRecorderSample : MonoBehaviour
     {
         recorder = Recorder.Get("Animator.ProcessGraph");
         recorder.CollectFromAllThreads();
-        // ƒƒCƒ“ƒXƒŒƒbƒh‚Ì‚İ‚Ìê‡
+        // ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã¿ã®å ´åˆ
         //recorder.FilterToCurrentThread();
     }
 
@@ -31,8 +31,8 @@ public class ProfilerRecorderSample : MonoBehaviour
     {
         if (textField && recorder != null && shouldUpdate() )
         {
-            textField.text = "Animator.ProcessGraph " + recorder.sampleBlockCount + "‰ñŒÄ‚Ño‚µ\n"
-                + recorder.elapsedNanoseconds + "ƒiƒm•b‚©‚©‚è‚Ü‚µ‚½";
+            textField.text = "Animator.ProcessGraph " + recorder.sampleBlockCount + "å›å‘¼ã³å‡ºã—Â¥n"
+                + recorder.elapsedNanoseconds + "ãƒŠãƒç§’ã‹ã‹ã‚Šã¾ã—ãŸ";
         }
     }
     private bool shouldUpdate()

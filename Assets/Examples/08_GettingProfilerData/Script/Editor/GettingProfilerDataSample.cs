@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditorInternal;
@@ -23,15 +23,15 @@ public class GettingProfilerDataSample : EditorWindow
     private void OnEnable()
     {
         var button = new Button(OnSearch);
-        button.text = "ŒŸõ‚·‚é";
+        button.text = "æ¤œç´¢ã™ã‚‹";
         this.textField = new TextField();
         this.textField.value = "SetPass Calls Count";
         this.scrollView = new ScrollView();
 
-        this.rootVisualElement.Add(new Label("Counter‚Ì–¼‘O‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢(Š®‘Sˆê’v)"));
+        this.rootVisualElement.Add(new Label("Counterã®åå‰ã‚’æŒ‡å®šã—ã¦ãã ã•ã„(å®Œå…¨ä¸€è‡´)"));
         this.rootVisualElement.Add(textField);
         this.rootVisualElement.Add(button);
-        this.rootVisualElement.Add(new Label("ŒŸõŒ‹‰Ê"));
+        this.rootVisualElement.Add(new Label("æ¤œç´¢çµæœ"));
         this.rootVisualElement.Add(scrollView);
     }
 
@@ -46,16 +46,16 @@ public class GettingProfilerDataSample : EditorWindow
     }
     List<string> GetInfoList(string counterName) {
         List<string> list = new List<string>();
-        // ProfilerWindowã‚É“Ç‚İ‚ñ‚¾ƒf[ƒ^‚ÌÅ‰‚ÆÅŒã‚ÌƒtƒŒ[ƒ€‚ÌIndex‚ğæ“¾‚µ‚Ü‚·
+        // ProfilerWindowä¸Šã«èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã®æœ€åˆã¨æœ€å¾Œã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®Indexã‚’å–å¾—ã—ã¾ã™
         int firstIndex = ProfilerDriver.firstFrameIndex;
         int lastIndex = ProfilerDriver.lastFrameIndex;
 
-        // Profilerã‚ÌÅ‰‚ÌƒtƒŒ[ƒ€‚©‚çÅŒã‚ÌƒtƒŒ[ƒ€‚Ü‚Åˆ—‚µ‚Ü‚·
+        // Profilerä¸Šã®æœ€åˆã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰æœ€å¾Œã®ãƒ•ãƒ¬ãƒ¼ãƒ ã¾ã§å‡¦ç†ã—ã¾ã™
         for (int frameIdx = firstIndex; frameIdx < lastIndex; ++frameIdx)
         {
-            // SetPass Calls‚Ìî•ñ‚ğƒƒO‚É‘‚«o‚µ‚Ü‚·
-            // GetFormattedCounterValue‚É‚ÍƒJƒeƒSƒŠ‚ğ“ü‚ê‚é‚Ì‚Å‚·‚ªA
-            // ‚í‚©‚ç‚È‚¢ê‡null‚ğ“ü‚ê‚é‚±‚Æ‚ªo—ˆ‚Ü‚·
+            // SetPass Callsã®æƒ…å ±ã‚’ãƒ­ã‚°ã«æ›¸ãå‡ºã—ã¾ã™
+            // GetFormattedCounterValueã«ã¯ã‚«ãƒ†ã‚´ãƒªã‚’å…¥ã‚Œã‚‹ã®ã§ã™ãŒã€
+            // ã‚ã‹ã‚‰ãªã„å ´åˆnullã‚’å…¥ã‚Œã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™
             list.Add("frame:" + frameIdx + "  counter:" +
                 ProfilerDriver.GetFormattedCounterValue(frameIdx, null, counterName));
         }

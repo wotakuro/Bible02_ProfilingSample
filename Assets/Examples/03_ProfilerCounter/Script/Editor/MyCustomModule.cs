@@ -1,18 +1,18 @@
-using System;
+ï»¿using System;
 using Unity.Profiling;
 using Unity.Profiling.Editor;
 
-// ProfilerModule‚ğŒp³‚µ‚½ƒNƒ‰ƒX‚ğì¬‚·‚é‚±‚Æ‚ÅA“Æ©‚ÌModule‚ğì¬‚Å‚«‚Ü‚·
+// ProfilerModuleã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã™ã‚‹ã“ã¨ã§ã€ç‹¬è‡ªã®Moduleã‚’ä½œæˆã§ãã¾ã™
 [Serializable]
 [ProfilerModuleMetadata("MyCustomModule")]
 public class MyCustomModule : ProfilerModule
 {
-    // ƒ`ƒƒ[ƒg‚É•\¦‚·‚éƒJƒEƒ“ƒ^[‚ğ”z—ñ‚ÅéŒ¾‚µ‚Ü‚·
+    // ãƒãƒ£ãƒ¼ãƒˆã«è¡¨ç¤ºã™ã‚‹ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã‚’é…åˆ—ã§å®£è¨€ã—ã¾ã™
     static readonly ProfilerCounterDescriptor[] k_ChartCounters =
         new ProfilerCounterDescriptor[]{
-        new ProfilerCounterDescriptor("ƒLƒƒƒ‰‚Ì”", ProfilerCategory.Scripts),
+        new ProfilerCounterDescriptor("ã‚­ãƒ£ãƒ©ã®æ•°", ProfilerCategory.Scripts),
     };
-    // ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅAbaseƒNƒ‰ƒX‚ÉƒJƒEƒ“ƒ^[ˆê——‚ğ“n‚µ‚Ä‰Šú‰»‚µ‚Ü‚·
+    // ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã€baseã‚¯ãƒ©ã‚¹ã«ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ä¸€è¦§ã‚’æ¸¡ã—ã¦åˆæœŸåŒ–ã—ã¾ã™
     public MyCustomModule() : base(k_ChartCounters) { }
 }
 

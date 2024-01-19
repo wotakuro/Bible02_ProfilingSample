@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditorInternal;
@@ -23,15 +23,15 @@ public class GettingRawFrameDataSample : EditorWindow
     private void OnEnable()
     {
         var button = new Button(OnSearch);
-        button.text = "ŒŸõ‚·‚é";
+        button.text = "æ¤œç´¢ã™ã‚‹";
         this.textField = new TextField();
         this.textField.value = "Animator.ProcessGraph";
         this.scrollView = new ScrollView();
 
-        this.rootVisualElement.Add(new Label("Profiler‚©‚çƒŠƒXƒgƒAƒbƒv‚µ‚½‚¢ProfilerMaker‚Ì–¼‘O‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢(Š®‘Sˆê’v)"));
+        this.rootVisualElement.Add(new Label("Profilerã‹ã‚‰ãƒªã‚¹ãƒˆã‚¢ãƒƒãƒ—ã—ãŸã„ProfilerMakerã®åå‰ã‚’æŒ‡å®šã—ã¦ãã ã•ã„(å®Œå…¨ä¸€è‡´)"));
         this.rootVisualElement.Add(textField);
         this.rootVisualElement.Add(button);
-        this.rootVisualElement.Add(new Label("ŒŸõŒ‹‰Ê"));
+        this.rootVisualElement.Add(new Label("æ¤œç´¢çµæœ"));
         this.rootVisualElement.Add(scrollView);
     }
 

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
@@ -10,18 +10,18 @@ public class GettingCounterSample : MonoBehaviour
     [SerializeField]
     private Text textField;
 
-    // Draw Calls Count‚Ì’læ“¾—pƒIƒuƒWƒFƒNƒg
+    // Draw Calls Countã®å€¤å–å¾—ç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     private ProfilerRecorder drawCallsCount;
-    // SetPass Calls Count‚Ì’læ“¾—pƒIƒuƒWƒFƒNƒg
+    // SetPass Calls Countã®å€¤å–å¾—ç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     private ProfilerRecorder setPassCount;
-    // UsedMemory‚Ì’læ“¾—pƒIƒuƒWƒFƒNƒg
+    // UsedMemoryã®å€¤å–å¾—ç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     private ProfilerRecorder usedMemory;
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        // Editorã‚Å‚ÌÀs‚Å•`‰æƒXƒLƒbƒvH‚³‚ê‚Ä‚O‚É‚È‚é‚Ì‚Å‘Îô
+        // Editorä¸Šã§ã®å®Ÿè¡Œã§æç”»ã‚¹ã‚­ãƒƒãƒ—ï¼Ÿã•ã‚Œã¦ï¼ã«ãªã‚‹ã®ã§å¯¾ç­–
         Application.targetFrameRate = 30;
 
         drawCallsCount = ProfilerRecorder.StartNew(ProfilerCategory.Render,

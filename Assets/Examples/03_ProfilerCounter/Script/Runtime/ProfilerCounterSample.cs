@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Profiling;
@@ -8,7 +8,7 @@ public class ProfilerCounterSample : MonoBehaviour
 {
     static readonly ProfilerCounter<int> characterNumber =
        new ProfilerCounter<int>(ProfilerCategory.Scripts,
-           "ƒLƒƒƒ‰‚Ì”",
+           "ã‚­ãƒ£ãƒ©ã®æ•°",
            ProfilerMarkerDataUnit.Count);
 
     private int characterNum;

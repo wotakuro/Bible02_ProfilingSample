@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -6,20 +6,20 @@ using Unity.Collections;
 using UnityEngine.Profiling;
 
 public class EmitFrameMetadataSample : MonoBehaviour
-{// ƒ‰ƒ“ƒ^ƒCƒ€ã‚ÅÀs‚³‚ê‚éƒR[ƒh‚Å‚·
- // FrameDataView.GetFrameMetadata‚Æ‹¤’Ê‚µ‚Äg‚¢‚Ü‚·
+{// ãƒ©ãƒ³ã‚¿ã‚¤ãƒ ä¸Šã§å®Ÿè¡Œã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ‰ã§ã™
+ // FrameDataView.GetFrameMetadataã¨å…±é€šã—ã¦ä½¿ã„ã¾ã™
     struct TextureInfo
     {
         public int format;
         public int w;
         public int h;
     }
-    // GUIDAEmitFrameMetaData‚ÆGetFrameMetaData‚Åˆê’v‚³‚¹‚é•K—v‚ª‚ ‚è‚Ü‚·
+    // GUIDã€EmitFrameMetaDataã¨GetFrameMetaDataã§ä¸€è‡´ã•ã›ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™
     static readonly Guid MetadataId = new Guid("7E1DEA84-51F1-477A-82B5-B5C57AC1EBF7");
-    // FrameMetaData‚ÍTagID‚Åƒf[ƒ^‚ğ‹æ•Ê‚Å‚«‚Ü‚·B
-    // Texture‚Ìî•ñ‚ğ–„‚ß‚ŞTag
+    // FrameMetaDataã¯TagIDã§ãƒ‡ãƒ¼ã‚¿ã‚’åŒºåˆ¥ã§ãã¾ã™ã€‚
+    // Textureã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€Tag
     static readonly int TextureInfoTag = 0;
-    // Texture‚Ì–{‘Ì‚ğ–„‚ß‚ŞTag
+    // Textureã®æœ¬ä½“ã‚’åŸ‹ã‚è¾¼ã‚€Tag
     static readonly int TextureBodyTag = 1;
 
 
@@ -40,13 +40,13 @@ public class EmitFrameMetadataSample : MonoBehaviour
             yield break;
         }
 #if UNITY_EDITOR
-        // EditorÀs‚ÅŠ®—¹‚ÉƒGƒ‰[‚ªo‚é‚Ì‚ğ–h‚®‚½‚ß
+        // Editorå®Ÿè¡Œã§å®Œäº†æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒå‡ºã‚‹ã®ã‚’é˜²ããŸã‚
         if (!UnityEditor.EditorApplication.isPlaying)
         {
             yield break;
         }
 #endif
-        // Texture2D‚Ìî•ñ‚ğTag 0”Ô‚É–„‚ß‚İ‚Ü‚·
+        // Texture2Dã®æƒ…å ±ã‚’Tag 0ç•ªã«åŸ‹ã‚è¾¼ã¿ã¾ã™
         TextureInfo textureInfo = new TextureInfo()
         {
             format = (int)texture2D.format,
@@ -55,7 +55,7 @@ public class EmitFrameMetadataSample : MonoBehaviour
         };
         Profiler.EmitFrameMetaData(MetadataId, TextureInfoTag, new[] { textureInfo });
 
-        // Texture–{‘Ì‚Ìƒf[ƒ^‚ğæ“¾‚µATag‚P”Ô‚Éƒf[ƒ^‚ğ–„‚ß‚İ‚Ü‚·
+        // Textureæœ¬ä½“ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã—ã€Tagï¼‘ç•ªã«ãƒ‡ãƒ¼ã‚¿ã‚’åŸ‹ã‚è¾¼ã¿ã¾ã™
         NativeArray<byte> textureData = texture2D.GetRawTextureData<byte>();
         Profiler.EmitFrameMetaData(MetadataId, TextureBodyTag, textureData);
         textureData.Dispose();

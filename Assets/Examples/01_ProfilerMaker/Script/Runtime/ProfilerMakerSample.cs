@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Unity.Profiling;
 
 public class ProfilerMakerSample : MonoBehaviour
 {
-    static readonly ProfilerMarker profilerMarker = new ProfilerMarker("ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ì•‰‰×");
+    static readonly ProfilerMarker profilerMarker = new ProfilerMarker("ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®è² è·");
 
     // Update is called once per frame
     void Update()
