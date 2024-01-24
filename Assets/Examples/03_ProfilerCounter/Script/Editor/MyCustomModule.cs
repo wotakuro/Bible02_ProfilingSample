@@ -3,6 +3,7 @@ using Unity.Profiling;
 using Unity.Profiling.Editor;
 
 // ProfilerModuleを継承したクラスを作成することで、独自のModuleを作成できます
+// ProfilerCounterSampleに対応したModuleを作ります
 [Serializable]
 [ProfilerModuleMetadata("MyCustomModule")]
 public class MyCustomModule : ProfilerModule
