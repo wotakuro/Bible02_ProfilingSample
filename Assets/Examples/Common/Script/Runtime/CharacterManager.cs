@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+// Profilerの値を変化を見てもらうため、
+// キャラクターを出したり引っ込めたりする処理を書いています
 public class CharacterManager : MonoBehaviour
 {
+    // 生成するPrefab
     [SerializeField]
     private GameObject prefab;
+    // PrefabからInstantiateしたGameObject一覧
+    private List<GameObject> gameObjects = new List<GameObject>();
 
-    private List<GameObject> characters = new List<GameObject>();
-
+    // Singletonのような感じで取得する用
     private static CharacterManager s_instance;
     public static CharacterManager Instance
     {
@@ -18,8 +21,10 @@ public class CharacterManager : MonoBehaviour
             return s_instance;
         }
     }
-
+    // キャラクター数が変わったときに呼び出すActionを外部から登録します
     public Action<int> OnCharacterNumberChange;
+
+    // Awake処理
     private void Awake()
     {
         // 初期に一体は配置
@@ -27,30 +32,33 @@ public class CharacterManager : MonoBehaviour
         s_instance = this;
     }
 
+    // キャラクター追加時の処理
     public void OnAddCharacter()
     {
-        var position = new Vector3(-0.7f,0.0f, characters.Count * -0.5f);
+        var position = new Vector3(-0.7f,0.0f, gameObjects.Count * -0.5f);
 
         GameObject character = GameObject.Instantiate(prefab,position,Quaternion.identity);
-        characters.Add(character);
+        gameObjects.Add(character);
         if (OnCharacterNumberChange != null)
         {
-            OnCharacterNumberChange(characters.Count);
+            OnCharacterNumberChange(gameObjects.Count);
         }
     }
+    // キャラクター削除時の処理
     public void OnRemoveCharacter()
     {
-        if (characters.Count > 0)
+        if (gameObjects.Count > 0)
         {
-            var character = characters[characters.Count - 1];
-            characters.RemoveAt(characters.Count - 1);
+            var character = gameObjects[gameObjects.Count - 1];
+            gameObjects.RemoveAt(gameObjects.Count - 1);
             GameObject.Destroy(character);
         }
         if (OnCharacterNumberChange != null)
         {
-            OnCharacterNumberChange(characters.Count);
+            OnCharacterNumberChange(gameObjects.Count);
         }
     }
+    // 破棄時の処理
     private void OnDestroy()
     {
         s_instance = null;

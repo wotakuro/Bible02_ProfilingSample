@@ -9,13 +9,15 @@ using UnityEditorInternal;
 using UnityEngine;
 
 public class GetFrameMetadataSample : EditorWindow
-{
+{// Editor上で利用する構造体
+ // EmitFrameMetaDataと共通して使います
     struct TextureInfo
     {
         public int format;
         public int w;
         public int h;
     }
+    // サンプル用のEditorWindowを作ります
     [MenuItem("Example/11_FrameMetaData")]
     public static void Create()
     {
@@ -31,17 +33,21 @@ public class GetFrameMetadataSample : EditorWindow
     // Textureの本体を埋め込まれたTag
     static readonly int TextureBodyTag = 1;
 
+    // 生成時の処理
     private void OnEnable()
     {
+        // ProfilerWindowでフレームが変わったときの処理をセットします
         ProfilerWindow.GetWindow<ProfilerWindow>().SelectedFrameIndexChanged += (frame) =>
         {
             this.Repaint();
         };
     }
+    // Screenshotのキャッシュ
     private Texture2D screenshotCache;
+    // 選択中のFrameのキャッシュ
     private int cacheFrameIdx = -1;
 
-    // Update is called once per frame
+    // GUI更新sy理
     void OnGUI()
     {        
         // ProfilerWindowで現在選択中のフレームのIndex
@@ -68,6 +74,8 @@ public class GetFrameMetadataSample : EditorWindow
         }
 
     }
+
+    // 指定されたフレームのScreenshotをTextureとして取得します
     private Texture2D GetScreenshotTexture(int frameIdx)
     {
 

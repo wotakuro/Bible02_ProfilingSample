@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+// Shaderなどの動的ロードのためにAssetBundleをロードします
 public class AssetBundleLoader : MonoBehaviour
 {
+    // ロードするAssetBundleオブジェクト
     private AssetBundle assetBundle;
-    private List<GameObject> gmos = new List<GameObject>();
+    // AssetBundleからInstantiateしたオブジェクト一覧
+    private List<GameObject> gameObjects = new List<GameObject>();
 
+    // 警告用のテキスト表示オブジェクト
     [SerializeField]
     private GameObject warningText;
 
@@ -20,7 +24,7 @@ public class AssetBundleLoader : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
+    // AssetBUndleのロード処理
     public void Load()
     {
         if (assetBundle != null) { return; }
@@ -39,27 +43,31 @@ public class AssetBundleLoader : MonoBehaviour
         foreach( var prefab in prefabs )
         {
             var gmo = GameObject.Instantiate(prefab);
-            gmos.Add( gmo );
+            gameObjects.Add( gmo );
         }
     }
+
+    // AssetBundleのUnload処理
     public void Unload()
     {
-        foreach(var gmo in gmos)
+        foreach(var gmo in gameObjects)
         {
             GameObject.Destroy(gmo);
         }
-        gmos.Clear();
+        gameObjects.Clear();
         if (assetBundle)
         {
             assetBundle.Unload(true);
         }
     }
 
+    // 破棄時の処理
     private void OnDestroy()
     {
         Unload();
     }
 
+    // AssetBundleのパス取得
     private string AssetBundlePath
     {
         get

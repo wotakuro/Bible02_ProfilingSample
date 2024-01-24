@@ -5,6 +5,7 @@ using System;
 using Unity.Collections;
 using UnityEngine.Profiling;
 
+//EmitFrameMetaDataによる埋め込みのサンプルです
 public class EmitFrameMetadataSample : MonoBehaviour
 {// ランタイム上で実行されるコードです
  // FrameDataView.GetFrameMetadataと共通して使います
@@ -23,17 +24,17 @@ public class EmitFrameMetadataSample : MonoBehaviour
     static readonly int TextureBodyTag = 1;
 
 
-
+    // LateUpdate処理です
     public void LateUpdate()
     {
         StartCoroutine(RecordFrame());
     }
-    // Update is called once per frame
 
+    // コルーチンの処理です
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
-
+        // Texture2DをキャプチャしてTexture2Dにします
         var texture2D = ScreenCapture.CaptureScreenshotAsTexture(1);
         if (!texture2D)
         {
@@ -58,6 +59,7 @@ public class EmitFrameMetadataSample : MonoBehaviour
         // Texture本体のデータを取得し、Tag１番にデータを埋め込みます
         NativeArray<byte> textureData = texture2D.GetRawTextureData<byte>();
         Profiler.EmitFrameMetaData(MetadataId, TextureBodyTag, textureData);
+        // Screenshotデータを破棄する処理をします
         textureData.Dispose();
         UnityEngine.Object.Destroy(texture2D);
     }
