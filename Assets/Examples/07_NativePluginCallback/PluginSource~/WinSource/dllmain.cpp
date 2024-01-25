@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 
-
+// DLLのエントリポイント
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
                        LPVOID lpReserved
@@ -23,7 +23,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     }
     return TRUE;
 }
-
+// 現スレッドIDの取得処理
 long GetThreadId() {
 
     return GetCurrentThreadId();
