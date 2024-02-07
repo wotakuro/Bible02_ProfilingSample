@@ -51,11 +51,12 @@
 　同様のものを下記URLで配布しています
 　https://github.com/wotakuro/ScreenshotToUnityProfiler
 
-■サンプルプロジェクトの利用上の注意
-　提供しているデータはUnityの学習のために作成したもので、実用を保証するものではありません。
-
 ■ライセンス表記
 ・サンプルには「ユニティ・テクノロジーズ・ジャパン株式会社」提供のUnityChan及びUnityChanToonShader Version2を使用しています
 
-■サンプルデータの著作権について
-Copyright C 2024 Yusuke Kurokawa　All rights reserved.
+■サンプルプロジェクトの利用上の注意
+　提供しているデータはUnityの学習のために作成したもので、実用を保証するものではありません。
+
+■サンプルプロジェクトのコードについて
+ご自由にお使いください。
+
